@@ -1,0 +1,232 @@
+<html><head>
+    <title>Zoom</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/sait-iwe-test/iwe-template-Final.min.css" no-shim> <!-- CSS for IWE Template. This and all of its dependencies should be on the server -->
+    <!-- Include any other CSS you need in the head here -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.11/webcomponents-lite.min.js"></script> <!-- Official script for Polymer JS 1.0, you can get it from https://www.polymer-project.org/1.0/docs/start/getting-the-code.html -->
+    <!--<script src="es6-promise.min.js"></script> --><!-- Promise polyfill for IE9 -->
+    <!--<link rel="import" href="https://s3-us-west-1.amazonaws.com/sait-iwe-test/zoom-home.html">-->
+    <link rel="import" href="zoom-home.html">
+<style>
+#signIn{
+    padding-bottom: 10px;}
+
+paper-button.host-a-meeting[raised]:not([style-scope]):not(.style-scope){
+    background: #3284BF none repeat scroll 0% 0%;
+    color: #FFF;}
+paper-button.sign-in[raised]:not([style-scope]):not(.style-scope){
+    background: #ffbc00 none repeat scroll 0% 0%;
+    color: 3f0000;}
+
+
+paper-button {
+
+    text-align: center;
+    font: inherit;
+    /*text-transform: uppercase;*/
+    cursor: pointer;
+    display: inline-block;
+    position: static;
+    box-sizing: border-box;
+    min-width: 5.14em;
+    margin: 0px 12.9em;
+    width:220px;
+    background: transparent none repeat scroll 0% 0%;
+    outline: medium none;
+    border-radius: 3px;
+    -moz-user-select: none;
+    cursor: pointer;
+    z-index: 0;}
+
+/*paper-ripple {
+    display: block;
+    position: absolute;
+    border-radius: inherit;
+    overflow: hidden;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;}*/
+
+
+paper-material.paper-material-0[elevation="1"] {
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12), 0px 3px 1px -2px rgba(0, 0, 0, 0.2);}
+
+.content.paper-button {
+    padding: 0.7em 0.57em;}
+
+paper-material.paper-button {
+    border-radius: inherit;}
+
+paper-material.paper-material-0 {
+    transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1) 0s;}
+
+paper-material {
+    display: block;
+    position: relative;
+pointer-events: none;}
+
+layout-BGImageAreaWrapper {
+    font-size: 14px;
+    margin: 0 auto;
+    width: 96%;
+    max-width: 1400px;
+    display: block;}
+
+layout-BGImageAreaWrapper.noBoundaries {
+    font-size: 14px;
+    margin: 0 auto;
+    width: fixed;
+    max-width: none;
+    display: block;
+}
+
+body {
+    background: #d1e8f8 url(/account/branding/p/b841475f-c83f-4171-9d2d-a3facd630ac6.jpg ) repeat fixed;
+}
+layout-ImageArea {
+    margin: -20px 0 0px;
+    padding: 10% 5%;
+    display: block;
+    background-image:url(/account/branding/p/7c9689c0-a134-4573-9cb7-591d7cdb0805.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 120%;}
+
+layout-columnwrapper.col-2LM left-sidebar {
+    border-right: none; }
+
+layout-columnwrapper > left-sidebar {
+    width: 45%;}
+layout-columnwrapper > right-sidebar {
+    width: 55%;
+    padding-left: 0px;}
+
+a:hover, a:visited {
+  color: #6600FF; }
+
+/*layout-Pagewrap {
+    min-height: initial;
+}*/
+
+@media screen and (max-width: 960px){ 
+    is  layout-columnwrapper > left-sidebar {width: 490px;}
+}
+
+@media only screen and (max-width: 480px) {
+    layout-ImageArea {
+        padding: 25% 30%;}
+    paper-button {
+        margin:0px 22%;}
+    header-header {
+        min-height: 66px; } 
+    body {
+        height: 100%;
+    }
+}
+
+@media only screen and (max-width: 760px),(max-width: 1163px) {
+    layout-ImageArea {
+        padding: 15% 5%;}
+    paper-button {
+        margin:0px 12%;}
+    header-header {
+        min-height: 46px; }
+    header-headercontainer {
+        padding: 0 0 65px;}
+    body {
+        height: 100%;
+    }
+}
+/*
+@media only screen and (min-width: 760px) {
+    paper-button {
+        margin:0px 25%;}
+}*/
+
+@media only screen and (max-width: 320px), (max-width: 480px),(max-width: 760px),(max-width: 1163px) {
+    layout-contentareawrapper[unresolved]{
+        max-width: 100%;
+        margin-bottom:-140px;}
+    body {
+        background: none;}
+    layout-columnwrapper > left-sidebar {
+        width: 100%;}
+    layout-footerpush,
+    header-button {
+        display:none; }
+    header-logo img.style-scope {
+        height: 35px;
+        margin: -10px 0 10px 20px; }
+}
+</style>
+    </head>
+    <body class="ajax-none">
+          <layout-pagewrap unresolved>
+        <layout-headerwrap logotext="CCLE-UCLA" groupname="" shibenabled="true" featurename="@ViewBag.Feature" unresolved></layout-headerwrap> 
+<!-- logotext can one of the available group (currently only UCLA, CCLE and MyUCLA) -->
+<!-- groupname is the name of your subgroup which will display as subtext to the logo -->
+<!-- shibenabled states if your site is behind shib -->
+<!-- featurename is the name of your feature, if you don't know what it is, feel free to leave this item blank -->
+        <!-- Image div to make consistent with CCLE home page -->
+        <layout-BGImageAreaWrapper unresolved> 
+            <layout-ImageArea unresolved>
+                <!--- Empty div to add background image that looks consistent with CCLE Home page -->
+            </layout-ImageArea>
+        </layout-bgimageareawrapper>
+            
+        <layout-contentareawrapper unresolved>
+            <layout-contentarea unresolved>
+                <layout-pagetitle titleText="Zoom" unresolved><!-- Put the page title in the titletext field-->
+
+                    <!-- Title Subtext -->
+                </layout-pagetitle>
+                <layout-columnwrapper class="col-2LM" id="column-wrapper">  <!-- Class can currently be col-1, col-2LM, col-2MR, col-3 , representing 1 column, 2 column left/main, 2 column main/right, 3 column respectively -->
+                    <left-sidebar>
+                        <p>Zoom is UCLA's choice for video and web conferencing which gives authorized users the ability to host online meetings with up to 50 participants. <a href="https://docs.ccle.ucla.edu/w/ZOOM" target="_blank">Find out more about using Zoom in CCLE. </a></p>
+
+                        <!-- Left Sidebar HTML -->
+                    </left-sidebar>
+<!--                    <main-content id="main-content">
+
+                         Main Content HTML 
+                    </main-content>-->
+                    <right-sidebar>    
+                        <div id="signIn">
+                        <a href="http://ucla.zoom.us/signin">     
+                            <paper-button aria-disabled="false" role="button" tabindex="0" raised="" class="sign-in x-scope paper-button-0">
+                                <paper-ripple class="style-scope paper-button">
+                                    <div style="opacity: 0.00414644;" class="style-scope paper-ripple" id="background"></div>
+                                    <div class="style-scope paper-ripple" id="waves"></div>
+                                </paper-ripple>
+                                <paper-material elevation="1" class="content  style-scope paper-button x-scope paper-material-0" animated="">
+                                  First time user? Log In
+                                </paper-material>
+                            </paper-button>
+                        </a>
+                        </div>
+                        
+                        
+                        <div>
+                        <a href="http://ucla.zoom.us/start/webmeeting">    
+                            <paper-button aria-disabled="false" role="button" tabindex="0" raised="" class="host-a-meeting x-scope paper-button-0">
+                                <paper-ripple class="style-scope paper-button">
+                                    <div style="opacity: 0.00414644;" class="style-scope paper-ripple" id="background"></div>
+                                    <div class="style-scope paper-ripple" id="waves"></div>
+                                </paper-ripple>
+                                <paper-material elevation="1" class="content  style-scope paper-button x-scope paper-material-0" animated="">
+                                  Host A Meeting
+                                </paper-material>
+                            </paper-button>
+                        </a>
+                        </div>
+                        <!-- Right Sidebar HTML -->
+                    </right-sidebar>
+                </layout-columnwrapper>
+            </layout-contentarea>
+            <layout-footerpush></layout-footerpush>
+        </layout-contentareawrapper>
+
+    </layout-pagewrap>
+    <layout-footer unresolved></layout-footer>
+    <!-- Other necessary javascript -->
+    </body>
